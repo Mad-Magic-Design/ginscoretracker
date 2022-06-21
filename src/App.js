@@ -1,10 +1,13 @@
 
 import './App.css';
 import GinTracker from './components/gintracker';
+import { UserProvider } from './context/userContext';
 
 function App() {
   return (
-    <GinTracker />
+    <UserProvider>
+      <GinTracker />
+    </UserProvider>
   );
 }
 

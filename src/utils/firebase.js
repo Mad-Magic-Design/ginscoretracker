@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
+import { getFirestore, doc, getDoc, setDoc, collection, query, where, getDocs, updateDoc } from 'firebase/firestore';
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -39,6 +39,9 @@ export const createUserDocumentFromAuth = async (userAuth) => {
         const createdAt = new Date();
         const oneName = 'Player One';
         const twoName = 'Player Two';
+        const totalScores = [0, 0];
+        const totalWins = [0, 0];
+        const currentGame = [0, 0];
 
         try {
             await setDoc(userDocRef,
@@ -48,6 +51,9 @@ export const createUserDocumentFromAuth = async (userAuth) => {
                     createdAt,
                     oneName,
                     twoName,
+                    totalScores,
+                    totalWins,
+                    currentGame,
                 });
         } catch (error) {
             console.log('error creating the user', error.message);
@@ -56,3 +62,26 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 
     return userDocRef;
 }
+
+export const getUserDoc = async (userAuth) => {
+    const docRef = doc(db, 'users', userAuth.uid);
+    const docSnap = await getDoc(docRef);
+    /* if (docSnap.exists()) {
+         console.log("Document data:", docSnap.data());
+     } else {
+         // doc.data() will be undefined in this case
+         console.log("No such document!");
+     }*/
+
+    return docSnap.data();
+}
+
+export const getUserDocRef = async (userAuth) => {
+    const docRef = doc(db, 'users', userAuth.uid);
+    return docRef;
+}
+
+
+
+
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback)

@@ -7,8 +7,10 @@ function LogIn() {
         const userDocRef = await createUserDocumentFromAuth(user);
     }
     return (
-        <div>
-            <button onClick={logGoogleUser}>Log In With Google</button>
+        <div className="wrapper">
+            <div className="container">
+                <button className="log-in-button" onClick={logGoogleUser}>Log In With Google</button>
+            </div>
         </div>
     );
 }

@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import LogIn from "./login-in";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { userContext } from "../context/userContext";
 
 
 function Menu() {
@@ -11,11 +12,11 @@ function Menu() {
             title: 'Start',
             path: '/play'
         },
-        {
-            id: 2,
-            title: 'Continue',
-            path: '/continue',
-        },
+        /*  {
+              id: 2,
+              title: 'Continue',
+              path: '/continue',
+          },*/
         {
             id: 3,
             title: 'Input Game',
@@ -23,24 +24,19 @@ function Menu() {
         },
         {
             id: 4,
-            title: 'View History',
-            path: '/history'
-        }
+            title: 'All Time',
+            path: '/alltime'
+        },
+        {
+            id: 5,
+            title: 'Options',
+            path: '/options'
+        },
     ];
 
-    const [userID, setUserID] = useState(null);
+    const { currentUser } = useContext(userContext);
     const auth = getAuth();
-    const user = auth.currentUser;
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUserID(user.id);
-            } else {
-                setUserID(null);
-            }
-        });
-        // console.log(currentUser);
-    }, [userID]);
+    // const user = auth.currentUser;
 
 
     const logOut = async () => {
@@ -49,19 +45,28 @@ function Menu() {
         })
     }
 
+    console.log(currentUser);
     return (
-        <> {!user && <LogIn />}
-            {user && <div className="menu-container">
-                {menuOptions.map(
-                    (option) => (
-                        <Link key={option.id} to={option.path}> {option.title} </Link>
-                    )
-                )}
-                {user &&
-                    <button onClick={logOut}>Log Out</button>
-                }
+        <> {!currentUser && <LogIn />}
+            {currentUser && <div className="wrapper">
+                <div className="container">
+                    {menuOptions.map(
+                        (option) => (
+                            <div key={option.id}><Link to={option.path}>
+                                <button className="menu-button"> {option.title}
+                                </button>
+                            </Link></div>
 
-            </div >}
+                        )
+                    )}
+                    {currentUser &&
+
+                        <button className="menu-button" onClick={logOut}>Log Out</button>
+
+                    }
+
+                </div >
+            </div>}
         </>
     );
 }

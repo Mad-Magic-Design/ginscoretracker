@@ -1,38 +1,281 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #000530;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  text-align: center;
+  color: #000530
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+h4 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+  color: #BF1937;
+
+}
+
+p {
+  text-align: center;
+  margin: 0;
+  color: #BF1937;
+
+}
+
+button {
+  font-family: 'Noto Serif Display', serif;
+  font-weight: 700;
+  line-height: 25px
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #005E11;
+
+  box-sizing: border-box;
+
+  border-radius: 10px;
+  margin: 2rem 0rem;
+  z-index: 0;
+
+}
+
+.page-height {
+  width: 410px;
+  height: 840px;
+}
+
+.card-back {
+  position: absolute;
+  object-fit: fill;
+  z-index: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  z-index: 2;
+
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffc80000;
+  border-radius: 10px;
+  padding: 1rem 3rem;
+  margin: 0rem 4rem;
+
+}
+
+
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FEF6E0;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px 0px;
+}
+
+.menu-button {
+  height: 74px;
+  width: 140px;
+  background-color: #BF1937;
+  color: #FEF6E0;
+  margin: 5px 5px;
+  border-radius: 10px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.log-in-button {
+  height: 200px;
+  width: 200px;
+  background-color: #BF1937;
+  color: #FEF6E0;
+  border-radius: 10px;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 35px;
+}
+
+.top-decoration {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(226, 198, 203);
+  border-radius: 10px;
+  padding: 1rem 1rem;
+  margin: 0rem 4rem;
+  font-size: 2rem;
+  width: 80%;
+}
+
+@media (max-width: 500px) {
+  .page-height {
+    width: 400px;
+    height: 800px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .top-decoration {
+    margin: 0 0;
+    padding: 1rem .5rem;
   }
+
+
+}
+
+@media (max-width: 400px) {
+  .page-height {
+    width: 300px;
+    height: 700px;
+  }
+
+
+}
+
+.score-container {
+  width: 200px;
+  height: 80px;
+  background-color: rgba(177, 31, 177, 0.281);
+}
+
+.score-bar {
+  width: 20%;
+  height: 100%;
+  background-color: green;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s ease-in-out;
+}
+
+.score-form-container {
+  border-radius: 10px;
+  border: 5px solid;
+  margin: 20px;
+  padding: 20px;
+}
+
+.score-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-input {
+  background-color: #BF1937;
+  text-align: center;
+  color: #FEF6E0;
+  border: none;
+  height: 80px;
+  width: 80px;
+  font-size: 40px;
+
+}
+
+.score-display {
+  font-size: 40px;
+  color: #FFC800;
+}
+
+.score-button {
+  height: 44px;
+  width: 94px;
+  font-size: 30px;
+}
+
+.end-button {
+  height: 100px;
+  width: 140px;
+  font-size: 40px;
+  line-height: 40px;
+  background-color: #005E11;
+  color: #FFC800;
+}
+
+.big-gold {
+  color: #FFC800;
+  font-size: 60px;
+}
+
+::placeholder {
+  color: #FEF6E0;
+  opacity: .75;
+}
+
+
+.container-upper-fixed {
+  position: fixed;
+  top: 15%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
+.container-middle-fixed {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
+.large-container {
+  height: 400px;
+  width: 200px;
+  background-color: #000530;
+
+}
+
+.x-large-container {
+  height: 600px;
+  width: 200px;
+  background-color: #000530;
+
+}
+
+.suit-falling {
+  position: fixed;
+  top: 200px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.suit-dancing {
+  position: fixed;
+  z-index: 3;
+  top: 50px;
+  pointer-events: none;
+}
+
+.option {
+  font-size: 35px;
+}
+
+.name-input {
+  font-size: 25px;
+  height: 25px;
 }
