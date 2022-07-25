@@ -1,14 +1,12 @@
 import React from 'react';
-import Menu from './menu';
-import Game from './game';
-import Total from './total'
-import Input from './input';
-import Options from './options';
-import { Routes, Route, Link, Outlet } from "react-router-dom";
-import TopDecoration from './topDecoration';
+import { Routes, Route} from "react-router-dom";
+import Menu from './Menu';
+import Game from './Game';
+import Total from './Total'
+import Input from './Input';
+import Options from './Options';
 import CardBack from '../Imgs/Card_Back-01.svg'
-//import * as SuitsDancing from '../Imgs/Suits_Dancing.json'
-//import Lottie from 'react-lottie';
+
 
 function GinTracker() {
 
@@ -31,21 +29,3 @@ function GinTracker() {
 
 export default GinTracker;
 
-/*
-    const defaultLottieOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: SuitsDancing,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice'
-        },
-
-    };
-
-<div className='suit-dancing' >
-                <Lottie options={defaultLottieOptions}
-                    height={90}
-                    width={200}
-                    isClickToPauseDisabled
-                />
-            </div>*/

@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { signInWithGooglePopup, createUserDocumentFromAuth } from "../utils/firebase";
 
 function LogIn() {
@@ -8,8 +7,10 @@ function LogIn() {
     }
     return (
         <div className="wrapper">
-            <div className="container">
-                <button className="log-in-button" onClick={logGoogleUser}>Log In With Google</button>
+            <div className="container section-container x-large-container">
+                <h1 className="gold-text" >Gin Score <br/>Tracker</h1>
+                <button className="log-in-button" onClick={logGoogleUser}>Log In</button>
+                <h1 className="gold-text">with your <br/> gmail</h1>
             </div>
         </div>
     );

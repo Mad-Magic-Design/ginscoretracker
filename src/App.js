@@ -1,6 +1,6 @@
 
 import './App.css';
-import GinTracker from './components/gintracker';
+import GinTracker from './components/Gintracker';
 import { UserProvider } from './context/userContext';
 
 function App() {

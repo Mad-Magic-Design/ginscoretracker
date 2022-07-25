@@ -221,6 +221,10 @@ button {
   font-size: 60px;
 }
 
+.gold-text {
+  color: #FFC800;
+}
+
 ::placeholder {
   color: #FEF6E0;
   opacity: .75;

@@ -2,17 +2,11 @@ import React, { createContext, useState, useEffect } from "react";
 import { onAuthStateChangedListener, getUserDoc, getUserDocRef } from "../utils/firebase";
 import { updateDoc } from 'firebase/firestore';
 
-export const userContext = createContext({
-    setCurrentUser: () => null,
-    currentUser: null,
-});
+export const userContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState(null);
-
-    const [userDoc, setUserDoc] = useState(null);
-
-
+    const [currentUser, setCurrentUser] = useState()
+    const [userDoc, setUserDoc] = useState()
 
     useEffect(() => {
         const unsunsubscribe = onAuthStateChangedListener((user) => {
@@ -22,11 +16,11 @@ export const UserProvider = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        fetchUser();
+        if(currentUser) fetchUser()
     }, [currentUser])
 
     const fetchUser = async () => {
-        const retrievedUserDoc = await getUserDoc(currentUser);
+        const retrievedUserDoc = await getUserDoc(currentUser)
         setUserDoc(retrievedUserDoc);
     }
 
@@ -37,6 +31,7 @@ export const UserProvider = ({ children }) => {
             oneName: playerOneName,
             twoName: playerTwoName,
         });
+        fetchUser();
     }
 
     const updateGameScore = async (gameScore) => {
@@ -56,7 +51,7 @@ export const UserProvider = ({ children }) => {
     }
 
 
-    const value = { currentUser, setCurrentUser, userDoc, fetchUser, updateGameScore, updateTotalStats };
+    const value = { currentUser, setCurrentUser, userDoc, fetchUser, updateGameScore, updateTotalStats, updatePlayerNames };
     return (
         <userContext.Provider value={value}>
             {children}
