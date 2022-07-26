@@ -4,10 +4,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from
 import { getFirestore, doc, getDoc, setDoc, collection, query, where, getDocs, updateDoc } from 'firebase/firestore';
 
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCgmnQt0ALt4hRvziIlZ9tNv3fYtcPlhWE",
     authDomain: "gin-score-tracker.firebaseapp.com",
@@ -17,7 +14,7 @@ const firebaseConfig = {
     appId: "1:154612986985:web:6ea5d5796fc480b5eb9ef8"
 };
 
-// Initialize Firebase
+
 const firebaseApp = initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
@@ -66,13 +63,6 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 export const getUserDoc = async (userAuth) => {
     const docRef = doc(db, 'users', userAuth.uid);
     const docSnap = await getDoc(docRef);
-    /* if (docSnap.exists()) {
-         console.log("Document data:", docSnap.data());
-     } else {
-         // doc.data() will be undefined in this case
-         console.log("No such document!");
-     }*/
-
     return docSnap.data();
 }
 

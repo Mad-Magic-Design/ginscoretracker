@@ -15,7 +15,7 @@ export default function Game() {
     const [newScore, setNewScore] = useState({
         playerName:'',
         i: 0,
-        score: 0,
+        score: '',
         showScore: false,
     })
     const [playFalling, setPlayFalling] = useState(false)
@@ -53,7 +53,7 @@ export default function Game() {
         setNewScore({
             playerName: winnerName,
             i: i,
-            score: 0,
+            score: '',
             showScore: true
         })
 
@@ -88,7 +88,7 @@ export default function Game() {
         <div className="wrapper">
             <div className="container">
 
-                {playFalling && <div className='suit-falling page-height' >
+                {playFalling && <div aria-label='Scoring Animation' className='suit-falling page-height' >
                     <Lottie options={defaultLottieOptions}
                         height={400}
                         width={400}
@@ -99,25 +99,25 @@ export default function Game() {
                 
                 <>
                     <div onClick={() => scoreHand(0)} className="section-container">
-                        <div className="Name-Container"><h4>{userDoc.oneName}</h4></div>
+                        <div className="Name-Container"><h2>{userDoc.oneName}</h2></div>
                     </div>
                     <div className="section-container">
                         <div className="score-container" id="playerOneScore">
                             <div style={{ width: `${(score[0] * .9) + 10}%` }} className="score-bar">
-                                <div>
+                                <div aria-label='Player One Score'>
                                     <p className='score-display'>{score[0]}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div onClick={() => scoreHand(1)} className="section-container">
-                        <div className="Name-Container"><h4>{userDoc.twoName}</h4></div>
+                        <div className="Name-Container"><h2>{userDoc.twoName}</h2></div>
                     </div>
                     <div className="section-container">
                         <div className="score-container" id="playeTwoScore">
                             <div style={{ width: `${(score[1] * .9) + 10}%` }} className="score-bar">
-                                <div className='score-display' >
-                                    {score[1]}
+                                <div aria-label='Player Two Score'  >
+                                    <p className='score-display'>{score[1]}</p>
                                 </div>
                             </div>
                         </div>
@@ -131,15 +131,15 @@ export default function Game() {
                     <label htmlFor="scoreInput"></label>
                     <input type="text" id="scoreInput" name="score" value={newScore.score} onChange={handleChange} placeholder="?" className="score-input" autoComplete="off" />
                     <br />
-                    <button disabled={(newScore.score === 0) ? true : false} className="score-button" onClick={handleSubmitHand}>score</button>
+                    <button aria-label='Submit Hand Score' disabled={(newScore.score === '') ? true : false} className="score-button" onClick={handleSubmitHand}>score</button>
 
                 </div>}
 
                 
                 {gameOver &&
                     <div className="section-container container-middle-fixed large-container">
-                        {score[0] >= 100 && <h1 className="big-gold"> {userDoc.oneName} Wins! </h1>}
-                        {score[1] >= 100 && <h1 className="big-gold" > {userDoc.twoName} Wins! </h1>}
+                        {score[0] >= 100 && <h1 className="gold-text"> {userDoc.oneName} Wins! </h1>}
+                        {score[1] >= 100 && <h1 className="gold-text" > {userDoc.twoName} Wins! </h1>}
                         <button className="end-button" onClick={submitGame}>End Game</button>
                     </div>
 

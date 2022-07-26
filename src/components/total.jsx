@@ -8,10 +8,10 @@ function Total() {
         <div className="wrapper">
             <div className="container">
                 <div className="section-container x-large-container">
-                    <h1 className="big-gold">{userDoc.oneName}</h1>
+                    <h1 className="gold-text">{userDoc.oneName}</h1>
                     <h4>Wins: {userDoc.totalWins[0]}</h4>
                     <h4> Total Score: {userDoc.totalScores[0]}</h4>
-                    <h1 className="big-gold">{userDoc.twoName}</h1>
+                    <h1 className="gold-text">{userDoc.twoName}</h1>
                     <h4>Wins: {userDoc.totalWins[1]}</h4>
                     <h4>Total Score: {userDoc.totalScores[1]}</h4>
 

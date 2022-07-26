@@ -41,9 +41,9 @@ function Input() {
                 <div  >
 
                     <form className="section-container x-large-container" onSubmit={handleSubmit}>
-                        <label className="big-gold" htmlFor="playerOneInput">{userDoc.oneName} Score</label>
+                        <label className="gold-text" htmlFor="playerOneInput">{userDoc.oneName} Score</label>
                         <input className="score-input" type="text" id="playerOneInput" value={formState.playerOneScore} onChange={handleChange} name='playerOneScore' />
-                        <label className="big-gold" htmlFor="playerTwoInput">{userDoc.twoName} Score</label>
+                        <label className="gold-text" htmlFor="playerTwoInput">{userDoc.twoName} Score</label>
                         <input className="score-input" type="text" id="playerTwoInput" value={formState.playerTwoScore} onChange={handleChange} name='playerTwoScore' />
                         {formState.validScore && <button className='menu-button' type="submit">Submit</button>}
 

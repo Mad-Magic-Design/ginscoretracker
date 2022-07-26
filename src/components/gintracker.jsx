@@ -15,7 +15,6 @@ function GinTracker() {
         <div className='page page-height'>
             <img className='card-back page-height' src={CardBack} alt="Card Background Decoration" />
 
-
             <Routes>
                 <Route path='/' element={<Menu />} />
                 <Route path='/play' element={<Game />} />
